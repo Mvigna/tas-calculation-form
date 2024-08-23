@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAS Calculation Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="table-container">
+    <h2>DMS TOTAL ADMISSION SCORE (TAS) CALCULATION SHEET</h2>
+    
+    <div class="grade-point-conversion">
+        <p><strong>STEP 1: LIST COURSE INFORMATION</strong></p>
+        <p><strong>GRADE POINT CONVERSION SCALE:</strong> A=4&nbsp;&nbsp;B=3&nbsp;&nbsp;C=2&nbsp;&nbsp;D=1&nbsp;&nbsp;F=0&nbsp;&nbsp;CLEP=0&nbsp;&nbsp;P=0</p>
+        <ul>
+            <li>1. Credits for CLEP or "P" grade courses will be used in the Adjustment Factor column but will not be used in calculating PR CUM.</li>
+            <li>2. CLEP, transfer course(s) and successful completion of the Biology Waiver Examination (BW) receive an Adjustment Factor equal to the number of credits achieved.</li>
+            <li>3. "D's" and "F's" will be used in the calculation of CR CUM but will not be used in the Adjustment Factor column to determine TAS.</li>
+        </ul>
+    </div>
+
+    <table>
+        <tr>
+            <th>Course</th>
+            <th>Letter Grade</th>
+            <th>Grade Point</th>
+            <th># of Credits</th>
+            <th>Total Points</th>
+            <th>Adjustment Factor</th>
+        </tr>
+        <tr>
+            <td>BIO110 or BIO151-Introduction to Biological Science</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="4" data-adjustment="0.04"/></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>BIO123 or ALH140</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>BIO161</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="4" data-adjustment="0.04" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>BIO162</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="4" data-adjustment="0.04" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>ENG101</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>ENG102</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>MAT108</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>PHY100</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="4" data-adjustment="0.04" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>PSY101</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <tr>
+            <td>SPH</td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" placeholder="Humanities Elective" /></td>
+            <td><input type="text" oninput="populateFields(this)" class="letter-grade" data-credits="3" data-adjustment="0.03" /></td>
+            <td><input type="text" readonly class="grade-points" /></td>
+            <td><input type="text" readonly class="credits" /></td>
+            <td><input type="text" readonly class="total-points" /></td>
+            <td><input type="text" readonly class="adjustment-factor" /></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+
+    <div class="result-row">
+        <div>Total Credits: <span id="total-credits">0.00</span></div>
+        <div>Total Points: <span id="total-points">0.00</span></div>
+        <div>Total Adjustment Factor: <span id="total-adjustment">0.00</span></div>
+    </div>
+
+    <div class="result-row highlight">
+        <div>PR CUM: <span id="pr-cum">0.00</span></div>
+        <div>TAS: <span id="tas">0.00</span></div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+

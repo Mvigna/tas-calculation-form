@@ -1,0 +1,84 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Light grey background */
+    margin: 0;
+    padding: 20px;
+}
+.table-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 10px; /* Rounded edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern look */
+    padding: 20px;
+    box-sizing: border-box;
+}
+h2 {
+    text-align: center;
+    color: #333333; /* Dark grey for modern text */
+    font-weight: normal;
+    font-size: 1.5em;
+}
+.grade-point-conversion {
+    background-color: #e0e0e0; /* Light grey background for box */
+    color: #333333; /* Dark text for readability */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px; /* Rounded edges for the box */
+    font-size: 0.9em;
+    border: 1px solid #d0d0d0; /* Slightly darker border for the box */
+}
+.grade-point-conversion p {
+    margin: 0 0 10px 0;
+}
+.grade-point-conversion ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.grade-point-conversion ul li {
+    margin: 5px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #dddddd; /* Light grey borders */
+    padding: 12px;
+    text-align: center;
+    color: #555555; /* Slightly darker text for contrast */
+}
+th {
+    background-color: #f7f7f7; /* Lighter background for headers */
+    font-weight: bold;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #cccccc; /* Light grey border for inputs */
+    border-radius: 5px; /* Rounded input fields */
+    font-size: 1em;
+}
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.result-row div {
+    width: 48%;
+    padding: 15px;
+    background-color: #f7f7f7; /* Light grey background for results */
+    border-radius: 5px;
+    border: 1px solid #dddddd; /* Border to define the result boxes */
+    text-align: center;
+    font-weight: bold;
+    color: #333333; /* Darker text for emphasis */
+    font-size: 1.2em;
+}
+.result-row .highlight {
+    background-color: #e0e0e0; /* Slightly darker grey for highlights */
+}
