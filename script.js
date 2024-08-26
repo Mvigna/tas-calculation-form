@@ -1,5 +1,5 @@
 function populateFields(inputElement) {
-    const row = inputElement.closest('tr'); // Safely get the parent row
+    const row = inputElement.parentElement.parentElement;
     const grade = inputElement.value.toUpperCase();
     const gradePointsField = row.querySelector('.grade-points');
     const creditsField = row.querySelector('.credits');
@@ -13,8 +13,8 @@ function populateFields(inputElement) {
         'C': 2,
         'D': 1,
         'F': 0,
-        'CLEP': 0,
-        'P': 0
+        'CLEP': 0, // Grade points for CLEP should be 0
+        'P': 0     // Grade points for P should be 0
     };
 
     // Credit values for courses
@@ -29,10 +29,10 @@ function populateFields(inputElement) {
         'PHY100': 4,
         'PSY101': 3,
         'SPH': 3,
-        'Humanities Elective': 3 // Correct course name with 3 credits
+        'Humanities Elective': 3 // Replace with actual credits if different
     };
 
-    // Adjustment factor values
+    // Adjustment factor values (0.01 * number of credits for courses other than CLEP/P)
     const adjustmentFactors = {
         'BIO110 or BIO151': 0.04,
         'BIO123 or ALH140': 0.04,
@@ -44,20 +44,26 @@ function populateFields(inputElement) {
         'PHY100': 0.04,
         'PSY101': 0.03,
         'SPH': 0.03,
-        'Humanities Elective': 0.03 // Correct adjustment factor
+        'Humanities Elective': 0.03 // Replace with actual factor if different
     };
 
     if (grade in gradePointValues) {
+        // Set grade points
         gradePointsField.value = gradePointValues[grade];
-
-        const courseName = row.cells[0].innerText.trim(); // Get the course name from the first cell
-        const credits = courseCredits[courseName] || 0;
-        creditsField.value = credits;
-
+        
         if (grade === 'CLEP' || grade === 'P') {
-            totalPointsField.value = '';
-            adjustmentFactorField.value = adjustmentFactors[courseName] || '0.04';
+            // For CLEP and P, adjust other fields specifically
+            creditsField.value = ''; // CLEP and P don't have credits
+            totalPointsField.value = ''; // CLEP and P don't contribute to total points
+            const courseName = inputElement.parentElement.parentElement.cells[0].innerText.trim();
+            adjustmentFactorField.value = adjustmentFactors[courseName] || '0.04'; // Specific adjustment factor for each course
         } else {
+            // Handle other grades
+            const courseName = inputElement.parentElement.parentElement.cells[0].innerText.trim();
+            
+            const credits = courseCredits[courseName] || 0;
+            creditsField.value = credits;
+
             const totalPoints = gradePointValues[grade] * credits;
             totalPointsField.value = totalPoints.toFixed(2);
 
