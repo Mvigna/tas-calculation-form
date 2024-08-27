@@ -13,62 +13,38 @@ function populateFields(inputElement) {
         'C': 2,
         'D': 1,
         'F': 0,
-        'CLEP': 0, // Grade points for CLEP should be 0
-        'P': 0     // Grade points for P should be 0
+        'CLEP': 0,
+        'P': 0
     };
 
-    // Credit values for courses
-    const courseCredits = {
-        'BIO110 or BIO151': 4,
-        'BIO123 or ALH140': 4,
-        'BIO161': 4,
-        'BIO162': 4,
-        'ENG101': 3,
-        'ENG102': 3,
-        'MAT108': 3,
-        'PHY100': 4,
-        'PSY101': 3,
-        'SPH': 3,
-        'Humanities Elective': 3 // Replace with actual credits if different
-    };
+    // Get the course name
+    const courseNameCell = row.querySelector('td:first-child');
+    const courseName = courseNameCell.querySelector('input')?.placeholder || courseNameCell.innerText.trim();
 
-    // Adjustment factor values (0.01 * number of credits for courses other than CLEP/P)
-    const adjustmentFactors = {
-        'BIO110 or BIO151': 0.04,
-        'BIO123 or ALH140': 0.04,
-        'BIO161': 0.04,
-        'BIO162': 0.04,
-        'ENG101': 0.03,
-        'ENG102': 0.03,
-        'MAT108': 0.03,
-        'PHY100': 0.04,
-        'PSY101': 0.03,
-        'SPH': 0.03,
-        'Humanities Elective': 0.03 // Replace with actual factor if different
-    };
+    // Determine the correct credits and adjustment factor
+    let credits = 0;
+    let adjustmentFactor = 0;
+
+    if (courseName === 'Humanities Elective') {
+        credits = 3;
+        adjustmentFactor = 0.03;
+    } else {
+        credits = parseFloat(row.querySelector('.letter-grade').dataset.credits);
+        adjustmentFactor = parseFloat(row.querySelector('.letter-grade').dataset.adjustment);
+    }
 
     if (grade in gradePointValues) {
-        // Set grade points
         gradePointsField.value = gradePointValues[grade];
-        
+        creditsField.value = credits;
+        totalPointsField.value = (gradePointValues[grade] * credits).toFixed(2);
+
+        // Correctly populate adjustment factor, including 'D' and 'F' cases
         if (grade === 'CLEP' || grade === 'P') {
-            // For CLEP and P, adjust other fields specifically
-            creditsField.value = ''; // CLEP and P don't have credits
-            totalPointsField.value = ''; // CLEP and P don't contribute to total points
-            const courseName = inputElement.parentElement.parentElement.cells[0].innerText.trim();
-            adjustmentFactorField.value = adjustmentFactors[courseName] || '0.04'; // Specific adjustment factor for each course
+            adjustmentFactorField.value = adjustmentFactor.toFixed(2);
+        } else if (grade !== 'F') {
+            adjustmentFactorField.value = adjustmentFactor.toFixed(2);
         } else {
-            // Handle other grades
-            const courseName = inputElement.parentElement.parentElement.cells[0].innerText.trim();
-            
-            const credits = courseCredits[courseName] || 0;
-            creditsField.value = credits;
-
-            const totalPoints = gradePointValues[grade] * credits;
-            totalPointsField.value = totalPoints.toFixed(2);
-
-            const adjustmentFactor = adjustmentFactors[courseName] || 0;
-            adjustmentFactorField.value = (grade !== 'F') ? adjustmentFactor.toFixed(2) : '';
+            adjustmentFactorField.value = '0.00';
         }
     } else {
         // Clear fields if the grade is invalid or removed
