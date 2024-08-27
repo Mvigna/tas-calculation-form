@@ -81,3 +81,30 @@ function populateFields(inputElement) {
     // Recalculate the totals
     calculateTotals();
 }
+
+function calculateTotals() {
+    let totalCredits = 0;
+    let totalPoints = 0;
+    let totalAdjustmentFactor = 0;
+
+    document.querySelectorAll('tr').forEach(row => {
+        const credits = parseFloat(row.querySelector('.credits')?.value) || 0;
+        const points = parseFloat(row.querySelector('.total-points')?.value) || 0;
+        const adjustmentFactor = parseFloat(row.querySelector('.adjustment-factor')?.value) || 0;
+
+        totalCredits += credits;
+        totalPoints += points;
+        totalAdjustmentFactor += adjustmentFactor;
+    });
+
+    document.getElementById('total-credits').innerText = totalCredits.toFixed(2);
+    document.getElementById('total-points').innerText = totalPoints.toFixed(2);
+    document.getElementById('total-adjustment').innerText = totalAdjustmentFactor.toFixed(2);
+
+    // Calculate PR CUM and TAS
+    const prCum = totalCredits ? (totalPoints / totalCredits) : 0;
+    document.getElementById('pr-cum').innerText = prCum.toFixed(2);
+    const tas = prCum + totalAdjustmentFactor;
+    document.getElementById('tas').innerText = tas.toFixed(2);
+}
+
